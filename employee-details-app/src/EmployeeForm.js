@@ -1,4 +1,3 @@
-// EmployeeForm.js
 import React, { useState } from 'react';
 import apiEndpoint from './config'; // Adjust the path based on your project structure
 
@@ -14,6 +13,7 @@ const EmployeeForm = ({ addEmployee }) => {
   });
 
   const [jobTitle, setJobTitle] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,14 +23,24 @@ const EmployeeForm = ({ addEmployee }) => {
     }));
 
     if (name === 'dob') {
-      const birthDate = new Date(value);
-      const currentDate = new Date();
-      const age = currentDate.getFullYear() - birthDate.getFullYear();
-      setEmployee((prevEmployee) => ({
-        ...prevEmployee,
-        age,
-      }));
+      if (!isValidDateFormat(value)) {
+        setErrorMessage('Invalid date format. Please use YYYY-MM-DD.');
+      } else {
+        setErrorMessage('');
+        const birthDate = new Date(value);
+        const currentDate = new Date();
+        const age = currentDate.getFullYear() - birthDate.getFullYear();
+        setEmployee((prevEmployee) => ({
+          ...prevEmployee,
+          age,
+        }));
+      }
     }
+  };
+
+  const isValidDateFormat = (dateString) => {
+    const regex = /^\d{4}-\d{2}-\d{2}$/;
+    return regex.test(dateString);
   };
 
   const generateJobTitle = () => {
@@ -52,6 +62,10 @@ const EmployeeForm = ({ addEmployee }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (errorMessage) {
+      return;
+    }
+
     try {
       const response = await fetch(`${apiEndpoint}/addEmployee`, {
         method: 'POST',
@@ -62,8 +76,6 @@ const EmployeeForm = ({ addEmployee }) => {
       });
 
       if (response.ok) {
-        // Handle successful response (optional)
-        // Clear form fields
         setEmployee({
           name: '',
           department: '',
@@ -87,7 +99,6 @@ const EmployeeForm = ({ addEmployee }) => {
     <div>
       <h2>Employee Details Form</h2>
       <form onSubmit={handleSubmit}>
-        {/* Input fields for employee details */}
         <label>Name:</label>
         <input
           type="text"
@@ -152,6 +163,12 @@ const EmployeeForm = ({ addEmployee }) => {
         </button>
 
         <button type="submit">Submit</button>
+
+        {errorMessage && (
+          <p style={{ color: 'red' }}>
+            {errorMessage} 😟
+          </p>
+        )}
       </form>
     </div>
   );

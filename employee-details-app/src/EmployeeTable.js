@@ -18,7 +18,7 @@ const EmployeeTable = ({ employees }) => {
         </thead>
         <tbody>
           {employees.map((employee) => (
-            <tr key={employee.id}>
+            <tr key={employee.id}> {/* Assuming 'id' is a unique identifier */}
               <td>{employee.name}</td>
               <td>{employee.department}</td>
               <td>{employee.designation}</td>

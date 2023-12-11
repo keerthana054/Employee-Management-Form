@@ -1,0 +1,118 @@
+/* styles.css */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #283747; /* Dark Blue Background */
+    color: #ecf0f1; /* Light Gray Text */
+  }
+  
+  .container {
+    width: 80%;
+    max-width: 600px;
+    margin: auto;
+    background-color: #34495e; /* Dark Blue-Grey Container */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s ease-in-out; /* Fade-in Animation */
+  }
+
+  .h1{
+    align-items: center;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    animation: slideIn 0.5s ease-in-out; /* Slide-in Animation */
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+  
+  input {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #2c3e50; /* Darker Blue-Grey Border */
+    border-radius: 8px;
+    transition: border-color 0.3s;
+    background-color: #2c3e50; /* Darker Blue-Grey Background */
+    color: #ecf0f1; /* Light Gray Text */
+  }
+  
+  input:focus {
+    outline: none;
+    border-color: #3498db; /* Bright Blue Border on Focus */
+  }
+  
+  button {
+    padding: 15px;
+    background-color: #3498db;
+    color: #ecf0f1;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 10px; /* Add margin to separate buttons */
+  }
+  
+  button:hover {
+    background-color: #2980b9;
+  }
+  
+  h2 {
+    color: #ecf0f1;
+    margin-bottom: 25px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    animation: fadeIn 0.5s ease-in-out; /* Fade-in Animation for Table */
+  }
+  
+  thead {
+    background-color: #3498db;
+    color: #ecf0f1;
+  }
+  
+  th, td {
+    border: 1px solid #2c3e50;
+    padding: 18px;
+    text-align: left;
+  }
+  
+  th {
+    text-transform: uppercase;
+  }
+  

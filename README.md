@@ -24,23 +24,25 @@ A simple web-based Employee Management System that allows users to input, displa
    git clone https://github.com/your-username/employee-management-system.git
 Navigate to the project folder:
 
-bash
-Copy code
-cd employee-management-system
-Install dependencies:
+   ```bash
+   Copy code
+   cd employee-management-system
+```
 
-bash
+2.Install dependencies:
+
+```bash
 Copy code
 npm install
 Set up the MySQL database and update the database configuration in server/db.js.
-
+```
 Start the application:
 
-bash
+```bash
 Copy code
 npm start
 Open your web browser and navigate to http://localhost:3000 to access the Employee Management System.
-
+```
 Usage
 Fill in the employee details in the provided form.
 Click the "Submit" button to add the information to the table.
